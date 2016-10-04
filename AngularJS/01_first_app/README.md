@@ -1,11 +1,9 @@
-###### TIL01
-
 # AngularJs
 
 ## first_app : This Month's Bestsellers App
 
 - [코드카데미](https://www.codecademy.com) Lesson 1. Your First App 공부 후 github에 정리하기
-- [결과물 바로가기](https://sharryhong.github.io/TIL/angularjs/01_first_app)
+- [결과물 바로가기](https://grapelove79.github.io/TIL/AngularJS/01_first_app/index.html)
 
 ### 1, 2 Hello AngularJsI
 ####1) js/app.js
