@@ -24,12 +24,6 @@ app.controller('MainController', ['$scope', function($scope) {
       title: 'Forecast',
       developer: 'Forecast',
       price: 1.99
- 		},
-		{
-      icon: 'http://www.gratisography.com/pictures/344_1.jpg',
-      title: 'dock',
-      developer: 'dock',
-      price: 1.99
-  	}
+ 		}
   ];
 }]);
