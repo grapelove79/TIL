@@ -5,6 +5,6 @@ app.directive('appInfo',function(){
       info: '='
     },
     templateUrl:
-    'js/directives/appInfo.html'
+    'js/directives/appInfo.html'1
   };
 });
