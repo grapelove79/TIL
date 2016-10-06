@@ -42,10 +42,10 @@ console.log(num); // 2
 - 원시 자료형(Primitive Types): 숫자, 문자열, 불리언, null, undefined
 - 객체 자료형(Object Types): 배열, 오브젝트, 날짜 객체, `함수` 등 원시 자료형을 제외한 전부.
 
-> **함수** <br>
-> In JavaScipt, functions are first-class citizens.<br>
-> 자바스크립트에서 함수는 1급 객체이다.<br>
-> `= 함수도 다른 자료형처럼 할당, 저장 복사가 가능하다.`
+	> **함수** <br>
+	> In JavaScipt, functions are first-class citizens.<br>
+	> 자바스크립트에서 함수는 1급 객체이다.<br>
+	> `= 함수도 다른 자료형처럼 할당, 저장 복사가 가능하다.`
 
 ### 원시 자료형
 - 해당하는 `리터럴(literal)` 표현이 있다.
@@ -94,7 +94,7 @@ String, Number, Boolean
 	8진수는 앞에 0을 붙인다.
 	첫번째(한자리) 자리가 1~7까지 쓸 수 있다. 
 	8이되면 한자리가 올라간다.
-```
+```javascript
 1234   123.4   0.81   .5   // 10진수
 0xFF	// 16진수 -> (15*16)+(15*1)=255
 0x1F	// 16진수 -> (1*16)+(15*1)=31
