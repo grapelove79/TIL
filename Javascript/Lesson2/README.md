@@ -108,7 +108,7 @@ obj2.name = 'value';
 obj2;	// Object {name: "value"}
 obj1;	// Object {name: "value"}
 ```
-	![객체 자료형 참조](../Assets/object.jpg)
+  ![참조](../Assets/object.jpg)
 	
 - instanceof 연산자를 통해 생성자 - 인스턴스의 관계를 알 수 있다.
 ```javascript
