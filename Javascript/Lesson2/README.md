@@ -73,7 +73,7 @@ var name = undefined;
 var 문자열 = "프론트엔드 갬프";
 문자열.length;	// 8
 문자열.indexOf('캠프');	// 6
-					  // 0프1론2트3엔4드5 6캠7프(문자 사이사이 index 번호가 있다고 생각한다.)
+			  // 0프1론2트3엔4드5 6캠7프(문자 사이사이 index 번호가 있다고 생각한다.)
 ```
 
 - 각 타입에는 타입의 성격을 정하는 생성자(constructor)가 있다.
@@ -81,7 +81,7 @@ var 문자열 = "프론트엔드 갬프";
 문자열은 String이라는 생성자가 있다.
 - 생성자의 이름은 대문자로 시작하는 관례가 있다.
 - 각 프로퍼티와 메소드에는 고유한 이름과 값이 있다.
-  ![붕어빵틀](./constructor.jpg)
+  ![붕어빵틀](Assets/constructor.jpg)
 > 생성자: 각 타입의 특성을 정한다.
 > 인스턴스(instance): 실제로 사용할 수 있는 값
 
@@ -106,6 +106,6 @@ obj2.name = 'value';
 obj2;	// Object {name: "value"}
 obj1;	// Object {name: "value"}
 ```
-![Alt text](./object.jpg)
+![객체 자료형 참조](Assets/object.jpg)
 
 
