@@ -84,8 +84,8 @@ var 문자열 = "프론트엔드 갬프";
 - 각 프로퍼티와 메소드에는 고유한 이름과 값이 있다.
   ![붕어빵틀](../Assets/constructor.jpg)
 
-> 생성자: 각 타입의 특성을 정한다.<br>
-> 인스턴스(instance): 실제로 사용할 수 있는 값
+	> 생성자: 각 타입의 특성을 정한다.<br>
+	> 인스턴스(instance): 실제로 사용할 수 있는 값
 
 ## 객체 자료형
 - 참조 자료형(Reference Type)이라고도 부른다.
@@ -108,4 +108,12 @@ obj2.name = 'value';
 obj2;	// Object {name: "value"}
 obj1;	// Object {name: "value"}
 ```
-![객체 자료형 참조](../Assets/object.jpg)
+	![객체 자료형 참조](../Assets/object.jpg)
+	
+- instanceof 연산자를 통해 생성자 - 인스턴스의 관계를 알 수 있다.
+```javascript
+var arr = new Array();
+arr instanceof Array	// true --> Array(생성자이름)
+```
+
+## 배열(Array)
