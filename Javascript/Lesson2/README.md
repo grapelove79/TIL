@@ -66,14 +66,15 @@ var name = undefined;
 
 ### 객체(Object)
 - 자바스크립트의 모든 값을 `객체처럼` 다루어진다.
-<br>
+
 > **객체** <br>
 > 각 타입마다 고유한 `속성`(프로퍼터: property)과 `실행 동작`(메소드: method)이 있다.
+
 ```javascript
 var 문자열 = "프론트엔드 갬프";
 문자열.length;	// 8
 문자열.indexOf('캠프');	// 6
-			  	// 0프1론2트3엔4드5 6캠7프(문자 사이사이 index 번호가 있다고 생각한다.)
+			  		// 0프1론2트3엔4드5 6캠7프(문자 사이사이 index 번호가 있다고 생각한다.)
 ```
 
 - 각 타입에는 타입의 성격을 정하는 생성자(constructor)가 있다.
@@ -108,5 +109,3 @@ obj2;	// Object {name: "value"}
 obj1;	// Object {name: "value"}
 ```
 ![객체 자료형 참조](../Assets/object.jpg)
-  ![붕어빵틀](../Assets/constructor.jpg)
-
