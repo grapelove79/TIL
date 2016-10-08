@@ -129,7 +129,7 @@ arr2 == arr1;  // true
 var arr3 = [10, 20, 30];
 arr1 == arr3;  // false --> 메모리에서 가리키는 값이 다르다.
 ```
-	![객체 자료형 참조](../Assets/object.jpg)
+  ![참조](../Assets/object.jpg)
 	
 - instanceof 연산자를 통해 생성자 - 인스턴스의 관계를 알 수 있다.
 ```javascript
