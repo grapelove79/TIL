@@ -129,7 +129,7 @@ arr2 == arr1;  // true
 var arr3 = [10, 20, 30];
 arr1 == arr3;  // false --> 메모리에서 가리키는 값이 다르다.
 ```
-  ![참조](../Assets/object.jpg)
+	![객체 자료형 참조](../Assets/object.jpg)
 	
 - instanceof 연산자를 통해 생성자 - 인스턴스의 관계를 알 수 있다.
 ```javascript
@@ -200,10 +200,13 @@ var arr = [10, 20, 30];
 arr.join('+');  // "10+20+30" --> join()은 배열을 문자열로 만든다.
 arr.length;  // 3
 arr;  // [10, 20, 30]
+
 arr.length = 2;  // length에 다른 값을 넣을 수 있다. 그럼 크기가 달라진다.
 arr;  // [10, 20]
+
 arr.length = 0; 	
 arr;  // []
+
 arr.length = 10;
 arr;  // [undefined * 10]
 ```
@@ -212,7 +215,7 @@ arr;  // [undefined * 10]
 - 마지막 index는 생략할 수 있다.
 ```javascript
 arr = [10, 20, 30, 40, 50];
-arr.slice(2, 3);  // [30]	--> slice는 (시작index, 마지막index3): 마지막 인덱스 이후부터 잘라낸다. 인덱스는 사이 사이에 있다.
+arr.slice(2, 3);  // [30]	--> slice는 (시작index, 마지막index3)
 arr.slice(2, 4);  // [20, 40
 arr.slice(2);  // [30, 40, 50] --> 마지막index는 생략할 수 있다.
 ```
@@ -277,7 +280,7 @@ obj.hasOwnProperty("hasOwnProperty")  // false
 - 사실, 자바스크립트의 모든 객체는 Object타입이기도 하다.
 - 동시에 각각의 고유의 타입니다.
 
-> **object instanceof constructor**
+> **object instanceof constructor**<br>
 > object : 테스트 대상인 오브젝트, constructor: 테스트할 함수
 
 ```javascript
