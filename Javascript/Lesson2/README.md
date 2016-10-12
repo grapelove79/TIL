@@ -293,4 +293,197 @@ var arr = [1, 2, 3];
 arr["안녕"] = "하세요";
 arr  // [1, 2, 3]
 arr.안녕  // "하세요"
+'slice' in arr  // true
 ```
+- 따라서 자바스크립트의 모든 값은  Object 타입의 특성도 함께 가지고 있다.
+
+## 함수(Function) :  기능
+- function + 공백 + 함수 이름 + 괄호로 선언한다.
+```javascript
+function 인사(){
+	console.log('안녕하세요');
+}
+```
+- 함수 이름 뒤에 괄호를 붙여서 실행한다.
+```javascript
+인사();
+```
+- 괄호를 쓰면 실행하고, 괄호를 안쓰면 단순히 "변수"처럼 되고, "값"으로 취급한다.
+- 다른 모든 타입은 "값"으로만 취급되지만, 함수는 `"값"`이기도 한 동시에 **"행동" 또는 "기능"** 이기도 하다.
+- Object의 특성을 가지고 있다.
+
+> **함수의 목적**
+> 여러 차례 반복해야 하는 코드 뭉치를 편리한 이름으로 묶는다.
+
+**라면 끓여줘**
+```javascript
+함수선언키워드 함수 이름
+function 라면끓이기() {
+	냄비에넣는다(물550ml, 건더기스프);
+	끓인다();
+	냄비에넣는다(면, 분말스프);
+	끓인다(4분);
+	불을끈다();
+	그릇에담는다();
+}
+
+라면끓이기();
+```
+**난 더 꼬들하게**
+```javascript
+				(인수: Argument)
+function 라면끓이기(물끓일시간) {
+	냄비에넣는다(물550ml, 건더기스프);
+	끓인다(물끓일시간);
+	냄비에넣는다(면, 분말스프);
+	끓인다(4분);
+	불을끈다();
+	그릇에담는다();
+}
+
+라면끓이기(4분);
+```
+- 함수 안에서 return 키워드를 사용하면 즉시 함수를 종료하고 키워드 뒤에 있는 값을 밖으로 반환한다.
+```javascript
+function 두배(arg){
+	return arg * 2;
+};
+var num = 두배(3);
+```
+- 괄호를 붙이지 않으면 "값"으로 취급된다. 복사된 함수도 똑같이 실행할 수 있다.
+```javascript
+var x2 = 두배;
+var num2 = x2(5);
+```
+- 생성자를 사용하는 방법보다는 리터럴 형식이 일반적이다.
+```javascript
+var func1 = new Function('arg', 'return arg;'); //  거의 사용안한다.
+var func2 = function(arg){
+	return arg;
+};
+```
+- **익명함수**(이름을 주지 않고 만들 수도 있다).
+```javascript
+function(arg){
+	return arg;
+}
+```
+- 가비지컬렉터(만들어도 의미도 없고 바로 사라진다. 아무곳에도 연결되있지 않은 쓸모없는 값들은 바로바로 정리한다. 만들자마자 사라질 운명)
+```javascript
+(function(){ 
+	console.log('안녕');
+});	
+||
+funtion (){
+	console.log('안녕');
+}
+```
+- **즉시실행함수**(한번 만들고 한번 딱 실행하고 메모리에서 지울려고 만드는 함수. 메모리에서 한번 쓰고 지우는 것)
+```javascript
+(12)  // 12
+
+(function(){ 
+	console.log('안녕');
+})();  // 안녕 --> ();는 즉시실행함수이다.
+
+
+var num = 10;
+num * 3;  // 30
+
+(function (num){
+	return num * 3;
+})(10);  // 30
+
+var result = (function (num){
+	return num * 3;
+})(10);
+result;  // 30
+
+var result = (function (num){
+	return num * 3;
+}(10));
+result;  // 30
+```
+- 함수 안에도 함수를 만들 수 있다.
+```javascript
+function outer(arg) {
+	function inner(a) {
+		return a * 2;
+	}
+	return inner(arg);
+}
+// outter 함수가 실행되어야 inner 함수가 실행된다.
+// 함수안에 있는 코드들은 실행을 해야 의미가 있다.
+```
+- 함수를 실행하면 독립된 컨텍스트(context)(독립된 실행공간, 함수만을 위한 메모리 공간)가 생겨서, 
+이 때문에 변수와 함수의 스코프(scope)가 정해진다.
+![closure](../Assets/closure.jpg)
+	```javascript
+	function outer(arg){
+		function inner(){
+			return arg + "name";
+		}
+		return inner;  // inner함수명 옆에 ();를 안쓰면 inner함수자체를 밖으로 빼는(반환하는) 것이다.
+	}
+	var name = "kim";
+	var func = outer(name);  // 변수 func는 함수 outer(name);을 실행한 결과이다. inner함수가 변수func저장되었기 때문에 func도 함수이다.
+	
+	func();  // "kimname" --> func함수에 괄호'()'를 붙여 inner함수실행한다.
+	
+	```
+	1. Global Context
+		- 자바스크립트는 기본적으로 `전역 컨텍스트`가 하나있다.
+		- outer와 name이 하나씩 들어가 있다.
+	1. Function context(outer)
+		- outer(name); 함수를 실행하면 독립된 메모리 공간(Function Context)이 생긴다. outer안에는 arg변수를 선언한 것이나 같다. 인수가 있는것은 변수를 선언한 것과 같다.(arg = name;)
+		- outer함수를 실행한 결과 값 inner함수와 arg변수(전달받은 값)가 들어가 있다.
+		- outer함수가 실행하면 나의 부모컨텍스트가 뭔지를  내부적으로 가지고 있다.
+			각각의 컨텍스트들은 나의 부모컨텍스트들을 뭔지 알고 있다.
+	1. Function Context(func)
+		- 여기서 outer는 밖같은 부모 함수이다.
+<br>	
+- **클로저(closure)**: 함수도 반환할 수 있다.
+	- 클로저는 자바스크립트의 강력한 기능 중 하나입니다. 자바스크립트는 함수의 내포화(함수 안에 함수를 정의하는것)를 가능하게 해주고 외부 함수 안에서 정의된 모든 변수와 함수들을 내부 함수가 완전하게 접근 할 수 있도록 승인해줍니다.(다른 외부 함수에서 접근된 모든 변수와 함수들까지) 그러나 외부 함수는 내부 함수 안에서 정의된 변수와 함수들에 접근 할 수 없습니다. 이는 내부 함수의 변수를 보호합니다. 또한 내부 함수가 외부 함수보다 더 오래 쓰이면, 내부 함수가 외부 함수 범위에 접근하고 나서 부터는 외부 함수에서 정의된 변수와 함수는 원래보다 더 오래 쓸수 있습니다. 클로저는 어떤 외부 함수 범위 밖 어딘가에서 내부 함수가 사용 가능하면 생성됩니다.
+	- 클로저는 함수 내부에 만든 지역변수가 사라지지 않고 계속해서 값을 유지하고 있는 상태를 말한다.
+	```javascript
+	/* 일반함수인 경우 */
+	function addCount(){
+		var count = 0;  
+		count++;
+		return count;
+	}
+	
+	document.write("1. count = "+addCount(), "<br>");  // 1. count = 1
+	// addCount()함수가 호출되면 지역변수 count가 0으로 초기화 됨과 동시에 만들어진다. 
+	// 다음으로 증가 연산자에 의해 1이 되며 이 값을 리턴하기 때문에 1이 출력됩니다. 
+	// 그리고 모든 구문을 실행한 함수는 종료됩니다. 
+	// 이와 동시에 함수 내부에 만들어진 count는 메모리에서 흔적조차 없이 사라진다.
+	document.write("2. count = "+addCount(), "<br>");  // 2. count = 1
+	document.write("3. count = "+addCount(), "<br>");  // 3. count = 1
+	
+	/* 클로저를 사용한 경우 */
+	function creatCounter(){
+	var count = 0;
+		function addCount(){
+			count++;
+			return count;
+		}
+		return addCount;
+	}
+	
+	var counter = creatCounter();
+	// createCounter() 함수가 호출되면 지역변수 count가 0으로 초기화됨과 동시에 만들어지니다. 
+	// 그리고 내부에 addCount()라는 함수도 만들어지고, 
+	// 마지막 addCount()함수를 리턴하고 creatCounter()함수는 종료됩니다.
+	
+	document.write("1. count=" + counter(), "<br>");  // 1. count=1
+	// counter()가 실행되면 addCount()함수가 실행되어 
+	// 증가 연산자에 의해서 count 값이 0에서 1로 증가하기 때문에 1이 출력된다.
+	document.write("2. count=" + counter(), "<br>");  // 2. count=2
+	document.write("3. count=" + counter(), "<br>");  // 3. count=3
+	```
+		
+		> creatCounter()가 종료되더라도 일반 함수처럼 사라지지 않고 계속해서 값을 유지하고 있다.
+		> 이유는 바로 addCounter()함수 내부에 count 변수를 사용하고 있는 상태에서 외부로 리턴되어 클로저 현상이 발생하기 때문이다. 
+	 
+	- 변수가 메모리에서 제거되지 않고 계속해서 값을 유지하는 상태를 클로저라고 부르며 내부에 있는 함수를 ''클로저 함수라고 한다. 
