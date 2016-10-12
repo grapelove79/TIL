@@ -417,20 +417,20 @@ function outer(arg) {
 ```
 - 함수를 실행하면 독립된 컨텍스트(context)(독립된 실행공간, 함수만을 위한 메모리 공간)가 생겨서, 
 이 때문에 변수와 함수의 스코프(scope)가 정해진다.
-![closure](../Assets/closure.jpg)
-	```javascript
-	function outer(arg){
-		function inner(){
-			return arg + "name";
-		}
-		return inner;  // inner함수명 옆에 ();를 안쓰면 inner함수자체를 밖으로 빼는(반환하는) 것이다.
+![closure](../Assets/closure.png)
+```javascript
+function outer(arg){
+	function inner(){
+		return arg + "name";
 	}
-	var name = "kim";
-	var func = outer(name);  // 변수 func는 함수 outer(name);을 실행한 결과이다. inner함수가 변수func저장되었기 때문에 func도 함수이다.
-	
-	func();  // "kimname" --> func함수에 괄호'()'를 붙여 inner함수실행한다.
-	
-	```
+	return inner;  // inner함수명 옆에 ();를 안쓰면 inner함수자체를 밖으로 빼는(반환하는) 것이다.
+}
+var name = "kim";
+var func = outer(name);  // 변수 func는 함수 outer(name);을 실행한 결과이다. inner함수가 변수func저장되었기 때문에 func도 함수이다.
+
+func();  // "kimname" --> func함수에 괄호'()'를 붙여 inner함수실행한다.
+
+```
 	1. Global Context
 		- 자바스크립트는 기본적으로 `전역 컨텍스트`가 하나있다.
 		- outer와 name이 하나씩 들어가 있다.
@@ -482,8 +482,8 @@ function outer(arg) {
 	document.write("2. count=" + counter(), "<br>");  // 2. count=2
 	document.write("3. count=" + counter(), "<br>");  // 3. count=3
 	```
-		
-		> creatCounter()가 종료되더라도 일반 함수처럼 사라지지 않고 계속해서 값을 유지하고 있다.
-		> 이유는 바로 addCounter()함수 내부에 count 변수를 사용하고 있는 상태에서 외부로 리턴되어 클로저 현상이 발생하기 때문이다. 
+	
+	> creatCounter()가 종료되더라도 일반 함수처럼 사라지지 않고 계속해서 값을 유지하고 있다.<br>
+	> 이유는 바로 addCounter()함수 내부에 count 변수를 사용하고 있는 상태에서 외부로 리턴되어 클로저 현상이 발생하기 때문이다. 
 	 
 	- 변수가 메모리에서 제거되지 않고 계속해서 값을 유지하는 상태를 클로저라고 부르며 내부에 있는 함수를 ''클로저 함수라고 한다. 
