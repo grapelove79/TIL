@@ -362,7 +362,8 @@ var func2 = function(arg){
 	return arg;
 };
 ```
-- **익명함수**(이름을 주지 않고 만들 수도 있다).
+### 익명함수
+- 이름을 주지 않고 만들 수도 있다.
 ```javascript
 function(arg){
 	return arg;
@@ -378,7 +379,8 @@ funtion (){
 	console.log('안녕');
 }
 ```
-- **즉시실행함수**(한번 만들고 한번 딱 실행하고 메모리에서 지울려고 만드는 함수. 메모리에서 한번 쓰고 지우는 것)
+###즉시실행함수
+- 한번 만들고 한번 딱 실행하고 메모리에서 지울려고 만드는 함수. 메모리에서 한번 쓰고 지우는 것.
 ```javascript
 (12)  // 12
 
@@ -404,7 +406,7 @@ var result = (function (num){
 }(10));
 result;  // 30
 ```
-- 함수 안에도 함수를 만들 수 있다.
+### 함수 안에도 함수를 만들 수 있다.
 ```javascript
 function outer(arg) {
 	function inner(a) {
@@ -415,10 +417,8 @@ function outer(arg) {
 // outter 함수가 실행되어야 inner 함수가 실행된다.
 // 함수안에 있는 코드들은 실행을 해야 의미가 있다.
 ```
-- 함수를 실행하면 독립된 컨텍스트(context)(독립된 실행공간, 함수만을 위한 메모리 공간)가 생겨서, 이 때문에 변수와 함수의 스코프(scope)가 정해진다.
-
-![closure](../Assets/closure.png)
-
+### 스코프(scope)
+함수를 실행하면 독립된 컨텍스트(context)(독립된 실행공간, 함수만을 위한 메모리 공간)가 생겨서, 이 때문에 변수와 함수의 스코프(scope)가 정해진다.
 ```javascript
 function outer(arg){
 	function inner(){
@@ -434,61 +434,210 @@ func();  // "kimname" --> func함수에 괄호'()'를 붙여 inner함수실행�
 
 ```
 
-1. Global Context
-	- 자바스크립트는 기본적으로 `전역 컨텍스트`가 하나있다.
-	- outer와 name이 하나씩 들어가 있다.
-1. Function context(outer)
-	- outer(name); 함수를 실행하면 독립된 메모리 공간(Function Context)이 생긴다. 
-	outer 안에는 arg변수를 선언한 것이나 같다. 인수가 있는것은 변수를 선언한 것과 같다.(arg = name;)
-	- outer함수를 실행한 결과 값 inner함수와 arg변수(전달받은 값)가 들어가 있다.
-	- outer함수가 실행하면 나의 부모컨텍스트가 뭔지를  내부적으로 가지고 있다.
-		각각의 컨텍스트들은 나의 부모컨텍스트들을 뭔지 알고 있다.
-1. Function Context(func)
-	- 여기서 outer는 밖같은 부모 함수이다.
-<br>	
+![closure](../Assets/closure.png)
 
-- **클로저(closure)**: 함수도 반환할 수 있다.
-	- 클로저는 자바스크립트의 강력한 기능 중 하나입니다. 자바스크립트는 함수의 내포화(함수 안에 함수를 정의하는것)를 가능하게 해주고 외부 함수 안에서 정의된 모든 변수와 함수들을 내부 함수가 완전하게 접근 할 수 있도록 승인해줍니다.(다른 외부 함수에서 접근된 모든 변수와 함수들까지) 그러나 외부 함수는 내부 함수 안에서 정의된 변수와 함수들에 접근 할 수 없습니다. 이는 내부 함수의 변수를 보호합니다. 또한 내부 함수가 외부 함수보다 더 오래 쓰이면, 내부 함수가 외부 함수 범위에 접근하고 나서 부터는 외부 함수에서 정의된 변수와 함수는 원래보다 더 오래 쓸수 있습니다. 클로저는 어떤 외부 함수 범위 밖 어딘가에서 내부 함수가 사용 가능하면 생성됩니다.
-	- 클로저는 함수 내부에 만든 지역변수가 사라지지 않고 계속해서 값을 유지하고 있는 상태를 말한다.
-	```javascript
-	/* 일반함수인 경우 */
+> 1. Global Context
+> 	- 자바스크립트는 기본적으로 `전역 컨텍스트`가 하나있다.
+> 	- outer와 name이 하나씩 들어가 있다.
+> 1. Function context(outer)
+> 	- outer(name); 함수를 실행하면 독립된 메모리 공간(Function Context)이 생긴다.  	outer 안에는 arg변수를 선언한 것이나 같다. 인수가 있는것은 변수를 선언한 것과 같다.(arg = name;)
+> 	- outer함수를 실행한 결과 값 inner함수와 arg변수(전달받은 값)가 들어가 있다.
+> 	- outer함수가 실행하면 나의 부모컨텍스트가 뭔지를  내부적으로 가지고 있다. 		각각의 컨텍스트들은 나의 부모컨텍스트들을 뭔지 알고 있다.
+> 1. Function Context(func)
+> 	- 여기서 outer는 밖같은 부모 함수이다.
+
+### 클로저(closure)
+- 함수도 반환할 수 있다.
+- 클로저는 자바스크립트의 강력한 기능 중 하나입니다. 자바스크립트는 함수의 내포화(함수 안에 함수를 정의하는것)를 가능하게 해주고 외부 함수 안에서 정의된 모든 변수와 함수들을 내부 함수가 완전하게 접근 할 수 있도록 승인해줍니다.(다른 외부 함수에서 접근된 모든 변수와 함수들까지) 그러나 외부 함수는 내부 함수 안에서 정의된 변수와 함수들에 접근 할 수 없습니다. 이는 내부 함수의 변수를 보호합니다. 또한 내부 함수가 외부 함수보다 더 오래 쓰이면, 내부 함수가 외부 함수 범위에 접근하고 나서 부터는 외부 함수에서 정의된 변수와 함수는 원래보다 더 오래 쓸수 있습니다. 클로저는 어떤 외부 함수 범위 밖 어딘가에서 내부 함수가 사용 가능하면 생성됩니다.
+- 클로저는 함수 내부에 만든 지역변수가 사라지지 않고 계속해서 값을 유지하고 있는 상태를 말한다.
+- 변수가 메모리에서 제거되지 않고 계속해서 값을 유지하는 상태를 클로저라고 부르며 내부에 있는 함수를 `클로저 함수`라고 한다. 
+```javascript
+/* 일반함수인 경우 */
+function addCount(){
+	var count = 0;  
+	count++;
+	return count;
+}
+
+document.write("1. count = "+addCount(), "<br>");  // 1. count = 1
+// addCount()함수가 호출되면 지역변수 count가 0으로 초기화 됨과 동시에 만들어진다. 
+// 다음으로 증가 연산자에 의해 1이 되며 이 값을 리턴하기 때문에 1이 출력됩니다. 
+// 그리고 모든 구문을 실행한 함수는 종료됩니다. 
+// 이와 동시에 함수 내부에 만들어진 count는 메모리에서 흔적조차 없이 사라진다.
+document.write("2. count = "+addCount(), "<br>");  // 2. count = 1
+document.write("3. count = "+addCount(), "<br>");  // 3. count = 1
+
+/* 클로저를 사용한 경우 */
+function creatCounter(){
+var count = 0;
 	function addCount(){
-		var count = 0;  
 		count++;
 		return count;
 	}
+	return addCount;
+}
+
+var counter = creatCounter();
+// createCounter() 함수가 호출되면 지역변수 count가 0으로 초기화됨과 동시에 만들어지니다. 
+// 그리고 내부에 addCount()라는 함수도 만들어지고, 
+// 마지막 addCount()함수를 리턴하고 creatCounter()함수는 종료됩니다.
+
+document.write("1. count=" + counter(), "<br>");  // 1. count=1
+// counter()가 실행되면 addCount()함수가 실행되어 
+// 증가 연산자에 의해서 count 값이 0에서 1로 증가하기 때문에 1이 출력된다.
+document.write("2. count=" + counter(), "<br>");  // 2. count=2
+document.write("3. count=" + counter(), "<br>");  // 3. count=3
+```
 	
-	document.write("1. count = "+addCount(), "<br>");  // 1. count = 1
-	// addCount()함수가 호출되면 지역변수 count가 0으로 초기화 됨과 동시에 만들어진다. 
-	// 다음으로 증가 연산자에 의해 1이 되며 이 값을 리턴하기 때문에 1이 출력됩니다. 
-	// 그리고 모든 구문을 실행한 함수는 종료됩니다. 
-	// 이와 동시에 함수 내부에 만들어진 count는 메모리에서 흔적조차 없이 사라진다.
-	document.write("2. count = "+addCount(), "<br>");  // 2. count = 1
-	document.write("3. count = "+addCount(), "<br>");  // 3. count = 1
-	
-	/* 클로저를 사용한 경우 */
-	function creatCounter(){
-	var count = 0;
-		function addCount(){
-			count++;
-			return count;
-		}
-		return addCount;
+> `creatCounter()`가 종료되더라도 일반 함수처럼 사라지지 않고 계속해서 값을 유지하고 있다.<br>
+> 이유는 바로 `addCounter()`함수 내부에 `count` 변수를 사용하고 있는 상태에서 외부로 리턴되어 클로저 현상이 발생하기 때문이다. 
+
+### 호이스팅(hoisting)
+- 변수와 선언된 함수는 가장 먼저 정의된 듯 동작한다.
+- 자바스클립트 해석기는 함수 내에 있는 변수 선언과 함수 선언을 먼저 처리하는데, 이 때문에 선언이 함수 가장 앞에 있는 듯한 `호이스팅(hoisting)` 현상이 발생한다.
+```javascript
+function outer(arg){
+	console.log(value);  // undefined
+	function inner(){
+		return arg + "name";
 	}
+	var value = 'hello';	
+	return inner;
+}
+
+var func = outer("kim");
+
+func();  // "kimname"
+
+/* 위 코드를 실제 내부적으로 봤을경우 */
+function outer(arg) {
+	var arg, value;
+	function inner() {
+		return arg + "name";
+	}
+		console.log(value);  // undefined
+	value = 'hello';
 	
-	var counter = creatCounter();
-	// createCounter() 함수가 호출되면 지역변수 count가 0으로 초기화됨과 동시에 만들어지니다. 
-	// 그리고 내부에 addCount()라는 함수도 만들어지고, 
-	// 마지막 addCount()함수를 리턴하고 creatCounter()함수는 종료됩니다.
-	
-	document.write("1. count=" + counter(), "<br>");  // 1. count=1
-	// counter()가 실행되면 addCount()함수가 실행되어 
-	// 증가 연산자에 의해서 count 값이 0에서 1로 증가하기 때문에 1이 출력된다.
-	document.write("2. count=" + counter(), "<br>");  // 2. count=2
-	document.write("3. count=" + counter(), "<br>");  // 3. count=3
-	```
-	
-	> creatCounter()가 종료되더라도 일반 함수처럼 사라지지 않고 계속해서 값을 유지하고 있다.<br>
-	> 이유는 바로 addCounter()함수 내부에 count 변수를 사용하고 있는 상태에서 외부로 리턴되어 클로저 현상이 발생하기 때문이다. 
-	 
-	- 변수가 메모리에서 제거되지 않고 계속해서 값을 유지하는 상태를 클로저라고 부르며 내부에 있는 함수를 ''클로저 함수라고 한다. 
+	return inner;
+}
+
+var func = outer("kim");
+```
+### argument (인수)
+- 함수 안에는 arguments라는 변수가 자동으로 만들어 진다.
+- 함수를 만들면 실행할 때 arguments가 만들어 진다.
+- arguments는 length를 가지고 있다.
+- argument는 변수에 전달된 값이 배열처럼 들어가 있지만 배열은 아니다.
+-  배열같은(array like) 자료의 특징
+	-   length property를 가지고 있다.
+	-  각괄호와( [ ] )와 숫자인덱스로 각각의 원소에 접근할 수 있다.
+	-  인자값에 넣는 개수에 따라서 arguments의 length가 늘어난다.
+	-  자바스트립트는 선언된거와 전달된 개수가 일치 않아도 에러가 안난다.(다른언어는 일치해야함.)
+```javascript
+function func(arg) {
+console.log(arguments);
+return arg;
+}
+func("hello, hi, bye");  // ["hello, hi, bye"]
+```
+### 함수도 객체이기 때문에 프로퍼티가 있다.
+```javascript
+function func(arg) {
+	console.log(arguments); // (실제로 전될된 값)
+	return arg;
+}
+func.length;  // 인수의 개수 = 1 (선언한 개수)
+func.name;  // 함수의 이름 (ES6)
+```
+### 사실 자바스크립트의 모든 타입 생성자는 함수이다.
+```javascript
+typeof Object  // function
+typeof Array // function
+Array
+```
+- 당연히 직접 만들 수 있다.(Class)
+	- 함수들은 소문자로 시작하는 것이 관례지만, 생성자(class)는 대문자로 시작하는것이 관례이다.
+```javascript
+function MyClass() {
+	...
+}
+
+var myVar = new MyClass();
+```
+
+## 스코프(Scope)
+- ES5까지는 전역 스코프와 지역(또는 함수) 스코프만 있었다.
+- context동작에 의한 현상이다.
+- `ES6` let키워드를 통해 선언된 변수는 블럭 스코프를 가진다.
+```javascript
+/* ES5 */
+if (true) {
+	var name = "hello";
+}
+name;  // "hello"
+
+
+/* ES6 */
+if(true) {
+	let name = "hello";
+	console.log(name);
+}
+name;  // Error: name is not defined
+
+
+if (true) {
+	let world = "hello";
+}
+world;  // Error: world is not defined
+```
+
+## 연산자
+-  ==와 ===중 자료형까지 확인하는 ===의 사용을 권장한다.
+```javascript
+null == undefined // true
+null === undefined  // false
+"0" == 0  // true
+"0" === 0  // false --> "0"은 문자열이다.
+```
+- 비교 연산자는 Boolean 값을 반환한다.
+- 할당 연산자는 할당된 값을 반환한다.
+```javascript
+name = "김영선";  // "김영선"
+(name = "김영선") + "의 블로그";  // "김영선의 블로그"
+```
+- 논리 AND 연산자는 마지막 truthy 값 또는 첫 falsy값을 반환하고,
+논리 OR 연산자는 첫 truthy 값 또는 마지막 falsy 값을 반환한다.
+	- falsy value: false, 숫자 0, NaN, 빈 문자열, null, undefined
+	- truthy: falsy value 를 제외한 나머지
+```javascript
+1 && 3 && 5 && false && 8 && true;  //false
+1 && 3 && 5 && 8 && 9;  // 9
+1 && 3 && 5 && 0 && 8 && 9;  // 0
+
+1 || 3 || 5 || 8 || 9;   // 1
+0 || false || "" || 8 || 9;  //8
+```
+
+```javascript
+function add(a, b) {
+	return a + b;
+}
+add(10);  // NaN
+
+
+function add(a, b) {
+	if(typeof b === 'undefined') {
+		b = a;
+	}
+	return a + b;
+} 
+add(10);  // 20
+
+
+function add(a, b) {
+	b = b || a;
+	return a + b;
+}
+add(10);  // 20
+```
+- 부정 연산자(!)를 변수나 값 앞에 붙이면 Boolean 값이 반환된다.
