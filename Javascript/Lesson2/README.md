@@ -415,9 +415,10 @@ function outer(arg) {
 // outter 함수가 실행되어야 inner 함수가 실행된다.
 // 함수안에 있는 코드들은 실행을 해야 의미가 있다.
 ```
-- 함수를 실행하면 독립된 컨텍스트(context)(독립된 실행공간, 함수만을 위한 메모리 공간)가 생겨서, 
-이 때문에 변수와 함수의 스코프(scope)가 정해진다.
+- 함수를 실행하면 독립된 컨텍스트(context)(독립된 실행공간, 함수만을 위한 메모리 공간)가 생겨서, 이 때문에 변수와 함수의 스코프(scope)가 정해진다.
+
 ![closure](../Assets/closure.png)
+
 ```javascript
 function outer(arg){
 	function inner(){
@@ -426,22 +427,26 @@ function outer(arg){
 	return inner;  // inner함수명 옆에 ();를 안쓰면 inner함수자체를 밖으로 빼는(반환하는) 것이다.
 }
 var name = "kim";
-var func = outer(name);  // 변수 func는 함수 outer(name);을 실행한 결과이다. inner함수가 변수func저장되었기 때문에 func도 함수이다.
+var func = outer(name);  // 변수 func는 함수 outer(name);을 실행한 결과이다. 
+			// inner함수가 변수func저장되었기 때문에 func도 함수이다.
 
 func();  // "kimname" --> func함수에 괄호'()'를 붙여 inner함수실행한다.
 
 ```
-	1. Global Context
-		- 자바스크립트는 기본적으로 `전역 컨텍스트`가 하나있다.
-		- outer와 name이 하나씩 들어가 있다.
-	1. Function context(outer)
-		- outer(name); 함수를 실행하면 독립된 메모리 공간(Function Context)이 생긴다. outer안에는 arg변수를 선언한 것이나 같다. 인수가 있는것은 변수를 선언한 것과 같다.(arg = name;)
-		- outer함수를 실행한 결과 값 inner함수와 arg변수(전달받은 값)가 들어가 있다.
-		- outer함수가 실행하면 나의 부모컨텍스트가 뭔지를  내부적으로 가지고 있다.
-			각각의 컨텍스트들은 나의 부모컨텍스트들을 뭔지 알고 있다.
-	1. Function Context(func)
-		- 여기서 outer는 밖같은 부모 함수이다.
+
+1. Global Context
+	- 자바스크립트는 기본적으로 `전역 컨텍스트`가 하나있다.
+	- outer와 name이 하나씩 들어가 있다.
+1. Function context(outer)
+	- outer(name); 함수를 실행하면 독립된 메모리 공간(Function Context)이 생긴다. 
+	outer 안에는 arg변수를 선언한 것이나 같다. 인수가 있는것은 변수를 선언한 것과 같다.(arg = name;)
+	- outer함수를 실행한 결과 값 inner함수와 arg변수(전달받은 값)가 들어가 있다.
+	- outer함수가 실행하면 나의 부모컨텍스트가 뭔지를  내부적으로 가지고 있다.
+		각각의 컨텍스트들은 나의 부모컨텍스트들을 뭔지 알고 있다.
+1. Function Context(func)
+	- 여기서 outer는 밖같은 부모 함수이다.
 <br>	
+
 - **클로저(closure)**: 함수도 반환할 수 있다.
 	- 클로저는 자바스크립트의 강력한 기능 중 하나입니다. 자바스크립트는 함수의 내포화(함수 안에 함수를 정의하는것)를 가능하게 해주고 외부 함수 안에서 정의된 모든 변수와 함수들을 내부 함수가 완전하게 접근 할 수 있도록 승인해줍니다.(다른 외부 함수에서 접근된 모든 변수와 함수들까지) 그러나 외부 함수는 내부 함수 안에서 정의된 변수와 함수들에 접근 할 수 없습니다. 이는 내부 함수의 변수를 보호합니다. 또한 내부 함수가 외부 함수보다 더 오래 쓰이면, 내부 함수가 외부 함수 범위에 접근하고 나서 부터는 외부 함수에서 정의된 변수와 함수는 원래보다 더 오래 쓸수 있습니다. 클로저는 어떤 외부 함수 범위 밖 어딘가에서 내부 함수가 사용 가능하면 생성됩니다.
 	- 클로저는 함수 내부에 만든 지역변수가 사라지지 않고 계속해서 값을 유지하고 있는 상태를 말한다.
