@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>문서 제목</title>
+</head>
+<body>
+	<script>
+		var 날짜 = new Date();
+
+		// 방법1
+		function 요일1(날짜){
+			var 요일인덱스 = 날짜.getDay();
+			console.log(요일인덱스);
+			var 요일이름 = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+
+			return 요일이름[요일인덱스];
+		} 
+
+		var result = 요일1(날짜);
+		console.log(result);
+
+
+		// 방법2
+		function 요일2(날짜){
+			var 요일인덱스 = 날짜.getDay();
+
+			return ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'][요일인덱스];
+		}
+
+		var result = 요일2(날짜);
+		console.log(result);
+
+
+		// 방법3
+		function 요일3(날짜){
+			var 요일인덱스 = 날짜.getDay();
+
+			return ['일', '월', '화', '수', '목', '금', '토'][요일인덱스] + '요일';
+		}
+
+		var result = 요일3(날짜);
+		console.log(result);
+
+		// 방법4
+		function 요일4(날짜){
+			var 요일인덱스 = 날짜.getDay();
+
+			return '일월화수목금토'[요일인덱스] + '요일';
+		}
+
+		var result = 요일4(날짜);
+		console.log(result);
+		
+	</script>
+</body>
+</html>
