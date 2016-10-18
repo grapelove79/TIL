@@ -375,14 +375,14 @@ function(arg){
 	console.log('안녕');
 });	
 ||
-funtion (){
+function (){
 	console.log('안녕');
 }
 ```
 ###즉시실행함수
 - 한번 만들고 한번 딱 실행하고 메모리에서 지울려고 만드는 함수. 메모리에서 한번 쓰고 지우는 것.
 ```javascript
-(12)  // 12
+(12);  // 12
 
 (function(){ 
 	console.log('안녕');
