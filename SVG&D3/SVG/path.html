@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>타이틀</title>
+	<script src="myNote.js"></script>
+	<style>
+		svg{
+			border: 1px solid #000;
+		}
+		.svgClass{
+			stroke:red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 연습문제 -->
+	<svg width="600" height="400">
+		<path d="M100,160 L160,100 L260,100 l50,60 z m70,125 l110,10 " fill="lime" stroke="green" stroke-width="3" fill-rule="nonezero" />
+	</svg>
+
+	<svg width="600" height="400">
+		<path d="M100,160 L160,100 L220,160 m-50,10 l110,10 z" fill="lime" stroke="green" stroke-width="3" fill-rule="nonezero" />
+	</svg>
+
+	<svg width="600" height="300">
+		<path d="M100,160 L160,100 H220" fill="none" stroke-width=3 stroke="blue"/>	
+	</svg>
+
+	<svg width="600" height="300">
+		<path d="M100,160 L160,100 H220 V160" fill="none" stroke-width=3 stroke="blue"/>	
+	</svg>
+
+	<svg width="600" height="300">
+		<path d="M100,160 L160,100 H220 V160 Z" fill="none" stroke-width=3 stroke="blue"/>	
+	</svg>
+
+	<svg width=600 height=400>
+	// (L220,160 Z)에서 closthpath를 하므로(M100,160)으로 선을 긋는다.
+	// 다시(M100,160)이 현위치(시작위치)가 되어
+	// (L100,250)으로 선을 긋는다.
+		<path d="M100,160 L160,100 L200,160 Z L100,250 L150,250 z" fill=none stroke-width=3 stroke=blue />
+	</svg>
+</body>
+</html>

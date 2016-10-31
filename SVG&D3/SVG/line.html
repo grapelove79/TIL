@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>타이틀</title>
+	<script src="myNote.js"></script>
+	<style>
+		svg{
+			border: 1px solid #000;
+		}
+		.svgClass{
+			stroke:red;
+		}
+	</style>
+</head>
+<body>
+	<svg width="600" height="300">
+		<line x1="100" y1="100" x2="100" y2="200" stroke="red"/>
+		<line x1="100" y1="200" x2="200" y2="200" stroke="green"/>
+		<line x1="100" y1="100" x2="200" y2="200" stroke="blue"/>
+	</svg>
+
+	<svg width="600" height="200">
+		<line class="svgClass" x1="100" y1="160" x2="200" y2="200" />
+	</svg>
+
+	<svg width="600" height="200">
+		<line	x1="20" y1="10" x2="120" y2="10" stroke="blue" storke-width="5"/>
+		<line	x1="20" y1="30" x2="120" y2="30" stroke="#0000ff" storke-width="5"/>
+		<line	x1="20" y1="60" x2="120" y2="60" stroke="#00f" storke-width="5"/>
+
+		<line	x1="20" y1="90" x2="120" y2="90" stroke="rgba(0,0,255,0.3)" stroke-width="5" />
+	</svg>
+
+	<svg width="600" height="300">
+		<line x1="10" y1="10" x2="110" y2="10" stroke="blue" />
+
+		<!--y1 값(150)이 가운데 표신된 것으로 상하로 1/2씩 표시하기 때문 -->
+		<line x1="10" y1="150" x2="110" y2="150" stroke="lime" stroke-width="40"/>
+		<line x1="30" y1="150" x2="150" y2="150" stroke="blue" stroke-width="1"/>
+	</svg>
+
+	<svg width=600 height=200>
+		<line	x1="10" y1="30" x2="200" y2="30" stroke="blue" stroke-width="5" stroke-dasharray="20,5" />
+		<line	x1="10" y1="100" x2="200" y2="100" stroke="blue" stroke-width="5" stroke-dasharray="30,10,7,3" />
+	</svg>
+
+	<svg width=600 height=200>
+		<line	x1="20" y1="20" x2="120" y2="20" stroke="blue" stroke-width="30" stroke-linecap="butt" />
+		<line	x1="20" y1="70" x2="120" y2="70" stroke="blue" stroke-width="30" stroke-linecap="round" />
+		<line	x1="20" y1="130" x2="120" y2="130" stroke="blue" stroke-width="30" stroke-linecap="square" />
+	</svg>
+
+	<svg width=600 height=400>
+		<polyline fill="none" stroke-width="30" stroke="blue" stroke-linejoin="miter" points="100,160 150,110 200,160" />
+
+		<polyline fill="none" stroke-width="30" stroke="blue" stroke-linejoin="round" points="100,260 150,210 200,260" />
+
+		<polyline fill="none" stroke-width="30" stroke="blue" stroke-linejoin="bevel" points="100,360 150,310 200,360" />
+	</svg>
+
+	<svg width=600 height=400>
+		<polyline fill="none" stroke-width="20" stroke="blue" stroke-linejoin="miter" points="100,150 150,100 130,150" />
+
+		<polyline fill="none" stroke-width="20" stroke="blue" stroke-linejoin="miter" stroke-miterlimit="5" points="120,300 170,250 150,300" />
+	</svg>
+
+	<svg width=600 height=300>
+		<line x1="100" y1="100" x2="300" y2="100" stroke="blue" stroke-width="10" stroke-dasharray="90,10" />
+
+		// stroke-dashoffset=50;50 픽셀만큼 왼쪽으로 이동하여 점선을 긋는다.
+		// 50픽셀 이전은 공백(10)을 제외한 값(40)만큼 점선을 긋는다.
+		<line x1="100" y1="150" x2="300" y2="150" stroke="blue" stroke-width="10" stroke-dasharray="90,10" stroke-dashoffset="50" />
+		<line x1="150" y1="80" x2="150" y2="200" stroke="red" />
+	</svg>
+
+	<svg width=600 height=300>
+		// rx, ry에 원의 반지름 값 작성
+		<rect x=100 y=125 width=100 height=50 stroke=blue rx=10 ry=10 />
+	</svg>
+
+	<svg width=600 height=300>
+		// rx, ry에 원의 반지름 값 작성
+		<rect x=100 y=125 width=100 height=50 stroke=blue rx=10 ry=10 fill="blue" />
+	</svg>
+
+	<svg width=600 height=300>
+		// fill-opacity=0.5. 겹쳐진 부분이 투과되어 보임
+		// rx, ry에 원의 반지름 값 작성
+		<rect x=100 y=140 width=100 height=50 rx=10 ry=10 fill="green" />
+		<rect x=150 y=165 width=100 height=50 rx=10 ry=10 fill="blue" fill-opacity="0.5" />
+	</svg>
+
+	<svg width="600" height="300">
+		// 원의 중심 좌표가 cx="200" cy="120"이고 반지름이 r="50"
+		<circle cx="200" cy="150" r="50" fill="blue" stroke="green" stroke-width="10" />
+	</svg>
+
+	<svg width="600" height="400">
+		// rx="60"이 ry="40" 보다 크므로 가로 폭이 긴 타원형이 된다.
+		<ellipse cx="200" cy="120" rx="60" ry="40" fill="blue" />
+
+		// rx="40"이 ry="60" 보다 크므로 가로 폭이 긴 타원형이 된다.
+		<ellipse cx="200" cy="250" rx="40" ry="60" fill="blue" />
+	</svg>
+
+	<svg width="600" height="400">
+		// rx="60"이 ry="40" 보다 크므로 가로 폭이 긴 타원형이 된다.
+		<ellipse cx="200" cy="120" rx="60" ry="40" fill="blue" />
+
+		// rx="40"이 ry="60" 보다 크므로 가로 폭이 긴 타원형이 된다.
+		<ellipse cx="200" cy="250" rx="40" ry="60" fill="blue" />
+	</svg>
+
+	<svg width="600" height="400">
+		// 선을 긋지 않아도 자동으로 그으므로 도형이 된다.
+		<polygon points="100,150 150,100 200,100 200,150" fill="lime" stroke-width="3" stroke="blue" />
+
+		<polygon points="100,280 150,230 200,230 200,280" fill="none" stroke-width="3" stroke="blue" />
+	</svg>
+
+	<svg width="600" height="400">
+		<polygon points="50,50 165,50 70,125 110,10 150,125" fill="lime" stroke="green" stroke-width="3" fill-rule="nonezero" />
+
+		<polygon points="50,190 165,190 70,265 110,150 150,265" fill="lime" stroke="green" stroke-width="3" fill-rule="evenodd" />
+	</svg>
+
+	
+</body>
+</html>

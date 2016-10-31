@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta charset="UTF-8">
+	<title>문서 제목</title>
+	<script src="js/D3/d3.js"></script>
+	<script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+	<script src="js/ex.js"></script>
+	<style>
+		#idsvg{
+			width: 600px;
+			height: 400px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+
+		d3.select('#idsvg')
+			.append('path')
+			.attr({
+				d: 'M10,110 L60,10 L110,110 z',
+				'fill-rule': 'nonezero'
+			})
+			// 엘리먼트의 style속성에 작성된다.
+			.style({
+				stroke: 'green', 
+				fill: 'lime'
+			})
+			// 함수를 호출하고 반환된 값을 사용
+			.style('stroke-width', function(){
+				return 5;
+			});
+
+			d3.select('#idsvg')
+			.append('path')
+			.attr({
+				d: 'M115,110 L165,10 L215,110 z',
+				'fill-rule': 'nonezero'
+			})
+			// 엘리먼트의 style속성에 작성된다.
+			.style({
+				stroke: 'green', 
+				fill: 'yellow'
+			})
+			// 함수를 호출하고 반환된 값을 사용
+			.style('stroke-width', function(){
+				return 5;
+			});
+		}
+	</script>
+</head>
+<body>
+	<svg id="idsvg">
+	</svg>
+</body>
+</html>

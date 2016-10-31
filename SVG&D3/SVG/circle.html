@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>타이틀</title>
+	<script src="myNote.js"></script>
+	<style>
+		svg{
+			border: 1px solid #000;
+		}
+		.svgClass{
+			stroke:red;
+		}
+	</style>
+</head>
+<body>
+<svg width=500 height=400>
+	<path d="M200,100 A50,50 0 1,0 200,150" fill=none stroke="blue" stroke-width=3 />
+</svg>
+
+<svg width="500" height="400">
+	<g fill="none" stroke-width="3">
+		<line x1=100 y1=80 x2=100 y2=500 stroke="orange"/>
+		<line x1=150 y1=80 x2=150 y2=500 stroke="orange"/>
+		<path d="M100,100 A50,50 0 1,0 150,100" stroke="blue"/>
+	</g>
+</svg>
+
+<div style="position: absolute; top: 0px; left: 0px">
+	<svg width=500 height=400>
+		
+	</svg>	
+</div>
+
+	window.onload = function(){
+
+	}
+</body>
+</html>
