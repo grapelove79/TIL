@@ -52,6 +52,7 @@ req.send();
 
 ### readyState 속성
 - AJAX 요청에 따라 0~4까지 변화함
+
 readyState | 의미
 --------|----------
 0 | open 메소드 호출 전
