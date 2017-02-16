@@ -13,12 +13,12 @@
 - 브라우저에서 페이지를 이동하지 않고 자바스크립트를 통해 HTTP Request를 보내고 그 응답을 받아 자바스크립트에서 처리할 수 기술.
 - 사용자에게 더 나은 사용 경험 제공, 대부분의 웹사이트에서 사용되고 있는 기술
 
-> 서버 설치 : $ npm install http-server -g
-> 로컬 서버 연결(서버구동하기) : 
+> **서버 설치** : $ npm install http-server -g <br>
+> **로컬 서버 연결(서버구동하기)** : <br>
 > - $ http-server -o -a localhost -p 8081
 > - $ http-server -o
-> : http://localhost:8081로 자동으로 띄워줍니다.
-> http-server가 설치되어있는지 확인: $ npm list -g http-server 
+> : http://localhost:8081로 자동으로 띄워줍니다. <br>
+> **http-server가 설치되어있는지 확인** : $ npm list -g http-server 
 
 
 1) AJAX를 위한 객체 생성
