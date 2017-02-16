@@ -21,20 +21,20 @@
 > http-server가 설치되어있는지 확인: $ npm list -g http-server 
 
 
-1. AJAX를 위한 객체 생성
+1) AJAX를 위한 객체 생성
 - AJAX 통신을 하기 위한 생성자를 통해 객체를 만듭니다. 여러개를 만들어 동시다발적으로 수행시킬 수 있습니다.
 ```javascript
 var req = new XMLHttpRequest(); // HTTP 요청을 만들 수 있는 새로운 객체를 생성하는 명령
 ```
-2. open 메소드 : setting 구간. 요청의 방식과 url설정
+2) open 메소드 : setting 구간. 요청의 방식과 url설정
 ```javascript
 req.open("GET", "./data.json"); // http request method와 URL 설정
 ```
-3. send 메소드 : 요청 전송. 통신 시작
+3) send 메소드 : 요청 전송. 통신 시작
 ```javascript
 req.send();
 ```
-4. 응답 확인
+4) 응답 확인
 - req.response에 저장됨
 - 비동기 방식으로 요청하기 때문에 send 메소드 호출 후, 바로 코드에서 접근하면 데이터가 비어 있음
 - AJAX의 진행에 따라 호출되는 callback함수를 활용해야 함.
