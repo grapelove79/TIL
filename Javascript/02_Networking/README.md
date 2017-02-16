@@ -15,9 +15,9 @@
 
 > **서버 설치** : $ npm install http-server -g <br>
 > **로컬 서버 연결(서버구동하기)** : <br>
-> - $ http-server -o -a localhost -p 8081
-> - $ http-server -o
-> : http://localhost:8081로 자동으로 띄워줍니다. <br>
+>   - $ http-server -o -a localhost -p 8081
+>   - $ http-server -o <br>
+>   : http://localhost:8081로 자동으로 띄워줍니다. <br>
 > **http-server가 설치되어있는지 확인** : $ npm list -g http-server 
 
 
