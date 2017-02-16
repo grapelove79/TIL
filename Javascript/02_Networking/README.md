@@ -39,7 +39,7 @@ req.send();
 - 비동기 방식으로 요청하기 때문에 send 메소드 호출 후, 바로 코드에서 접근하면 데이터가 비어 있음
 - AJAX의 진행에 따라 호출되는 callback함수를 활용해야 함.
 
-> 브라우저 옵션
+> **브라우저 옵션**
 > --disable-web-security 옵션(크롬속성 > 대상 > chorm.exe뒤에 --disable-web-security추가 > 계속)
 > "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=""
 > 브라우저의 보안 정책을 우회하기 위해 사용하는 옵션(AJAX는 서버를 돌려야 하는데 번거로우니 대신 사용)
