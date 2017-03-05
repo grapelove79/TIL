@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html" charset=“utf-8”>
+
+	<style type="text/css">
+
+		table {width: 50%; border-style: double;}
+		td {padding: 5px;}
+		textarea
+		{
+			width:100%;
+		}
+	</style>
+</head>
+
+
+<body>
+
+	<h1 align="center">회원가입</h1>
+
+	<form id="join">
+		<table align="center">
+			<tr>
+				<th>아이디</th>
+				<td> 
+					<input type="text" name="user_id" size="20" maxlength="8">
+					(영문,한글 8자리 이내)
+				</td>
+			</tr>
+			<tr>
+				<th>패스워드</th>
+				<td> 
+					<input type="password" name="user_pw" size="20" maxlength="8">
+					(영문 8자리미만)
+				</td>
+			</tr>
+			<tr>
+				<th>패스워드 확인</th>
+				<td> 
+					<input type="password" name="user_pw_re" size="20" maxlength="8">
+					(영문 8자리미만)
+				</td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td> 
+					<input type="text" name="user_name" size="20">
+				</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td> 
+					<input type="radio" name="gender" value="male" checked>남 &nbsp;&nbsp;
+					<input type="radio" name="gender" value="female">여
+				</td>
+			</tr>
+			<tr>
+				<th>직업</th>
+				<td>
+					<select name="job" style="width:120px">
+						<option value="student">학생</option>
+						<option value="teacher">교사</option>
+						<option value="marketer">마케터</option>
+						<option value="developer">개발자</option>
+						<option value="publisher">퍼블리셔</option>
+						<option value="driver">운전사</option>
+						<option value="architecture">건축가</option>
+						<option value="actor">배우</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>관심분야</th>
+				<td>
+					<input type="checkbox" name="hobby" value="travel">여행 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="sports">스포츠 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="movie">영화감상 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="book">독서 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="game">게임
+				</td>
+			</tr>
+			<tr>
+				<th>자기소개</th>
+				<td>
+					<textarea name="introduce" cols="50" rows="7"></textarea>
+				</td>
+			</tr>
+			<tr align="center">
+				<td colspan="2">
+					<input type="button" name="join_button" value="회원가입" onclick="onClickJoin()"> &nbsp;&nbsp;&nbsp;
+					<input type="reset" name="reset_button" value="취소">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<script type="text/javascript">
+
+		function onClickJoin() {
+			var joinForm = document.forms.join;
+			var userID = joinForm.user_id.value;
+
+			var genderValue = "male";
+			var genderElements = document.getElementsByName('gender');
+
+			for (var i = 0, length = genderElements.length; i < length; i++) {
+				if (genderElements[i].checked) {
+		        	genderValue = genderElements[i].value;
+        			break;
+    			}
+			}
+			
+			var hobbyElements = joinForm.hobby;
+			var hobbyValues = [];
+			
+			for (var item in hobbyElements) {
+				if (hobbyElements[item].checked == true) {
+					hobbyValues.push(hobbyElements[item].value);
+				}
+			}
+
+			console.log(userID);
+			console.log(genderValue);
+
+			var userID = joinForm.user_id.value;
+			var userPW = joinForm.user_pw.value;
+			var userPWRe = joinForm.user_pw_re.value;
+			var userName = joinForm.user_name.value;
+			var userJob = joinForm.job.value;
+			var userIntroduce = joinForm.introduce.value;
+
+			// 잘못된 정보가 들어왔으면 조건문을 통해 다음 단계로 넘어가지 못하도록 할 수 있습니다
+			// ...
+
+			if (userID.length == 0) {
+				alert("아이디를 입력해 주세요");
+				joinForm.user_id.select();
+				return;
+			}
+
+			if (userPW.length == 0) {
+				alert("암호를 입력해 주세요");
+				joinForm.user_pw.select();
+				return;	
+			}
+
+			if (userPW != userPWRe) {
+				alert("암호와 암호확인이 일치하지 않습니다");
+				joinForm.user_pw.select();
+				return;		
+			}
+
+			// 모든 조건을 충족했으면 회원가입을 진행합니다.
+			// 진행하기에 앞서 사용자에게 경고창으로 알립니다
+			alert("회원가입을 요청합니다");
+			
+			// 서버에 회원가입을 요청합니다 (회원가입 함수를 호출)
+			requestJoinToServer(userID, userPW, userName, genderValue, userJob, hobbyValues, userIntroduce);
+		}	
+
+		// 서버에 회원가입을 요청합니다
+		function requestJoinToServer(id, pw, name, gender, job, hobby, introduce) {
+
+			console.log(id+pw+name+gender+job+hobby+introduce);
+
+			// 여기서 회원정보 JSON 객체를 만들고 회원정보를 추가해 보세요
+			var userInfo = new Object();
+			var joinDate = getCurrentDate();
+			//...
+
+			userInfo.user_id = id;
+			userInfo.join_date = joinDate;
+			userInfo.user_pw = pw;
+			userInfo.user_name = name;
+			userInfo.user_gender = gender;
+			userInfo.user_job = job;
+			userInfo.user_hobby = hobby;
+			userInfo.user_introduce = introduce;
+
+
+			// 완성된 정보를 확인해 봅니다
+			console.log(userInfo);
+
+			xhr = new XMLHttpRequest();
+			var url = ""; /* <- URL 넣는 곳 */
+			xhr.open(""/* <- HTTP Method 들어오는 곳 */, url, true);
+			xhr.setRequestHeader("Content-type", "application/json");
+			xhr.onreadystatechange = function () { 
+				/* readyState */
+				/*  처리상태
+					0 : open()메서드 수행전
+					1 : 로딩중
+					2 : 로딩완료
+					3 : 서버처리중
+					4 : 서버처리끝
+				*/
+				if (xhr.readyState != 4) {
+					return
+				}
+				
+				var json = JSON.parse(xhr.response);
+
+				if (xhr.status == 200) {
+					console.log(json.message + ", " + json.user_id)
+					alert(json.user_id + "님의 회원가입이 완료되었습니다!");
+
+				} else if (json == null) {
+					alert("회원가입에 실패했습니다... 응답코드 : " + xhr.statusText);
+				}
+				else {
+					alert("회원가입에 실패했습니다... 또르르.." + json.message);
+				}
+			}
+
+			var data = JSON.stringify(userInfo);
+			xhr.send(data);
+		}
+
+		// 현재 날짜정보를 생성해서 반환하는 함수
+		function getCurrentDate() {
+			var date = new Date();
+
+			var year = date.getFullYear();
+			var month = date.getMonth() + 1;
+			var today = date.getDate();
+			var hour = date.getHours();
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+
+			var fullDateString = "";
+			fullDateString = fullDateString + year + "-";
+			fullDateString = fullDateString + month + "-";
+			fullDateString = fullDateString + today + " ";
+			fullDateString = fullDateString + hour + ":";
+			fullDateString = fullDateString + minute + ":";
+			fullDateString = fullDateString + second;
+
+			return fullDateString;
+		}
+	</script>
+
+</body>
+
+</html>

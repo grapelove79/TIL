@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html" charset=“utf-8”>
+
+	<style type="text/css">
+
+		table {width: 50%; border-style: double;}
+		td {padding: 5px;}
+		textarea
+		{
+			width:100%;
+		}
+	</style>
+</head>
+
+
+<body>
+
+	<h1 align="center">회원정보 조회</h1>
+
+	<form id="inquiry">
+		<table align="center">
+			<tr>
+				<th>조회할 회원 아이디</th>
+				<td> 
+					<input type="text" name="user_id" size="20" maxlength="8">
+					(영문,한글 8자리 이내)
+				</td>
+				<td>
+					<input type="button" name="inquiry_button" value="정보조회" onclick="onClickInquiry()"> 
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<form id="userInfo">
+		<table align="center">
+			<tr>
+				<th>아이디</th>
+				<td> 
+					<input type="text" name="user_id" size="20" maxlength="8" disabled>
+				</td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td> 
+					<input type="text" name="user_name" size="20" disabled>
+				</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td> 
+					<input type="radio" name="gender" value="male" disabled>남 &nbsp;&nbsp;
+					<input type="radio" name="gender" value="female" disabled>여
+				</td>
+			</tr>
+			<tr>
+				<th>직업</th>
+				<td>
+					<select name="job" style="width:120px" disabled>
+						<option value="student">학생</option>
+						<option value="teacher">교사</option>
+						<option value="marketer">마케터</option>
+						<option value="developer">개발자</option>
+						<option value="publisher">퍼블리셔</option>
+						<option value="driver">운전사</option>
+						<option value="architecture">건축가</option>
+						<option value="actor">배우</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>관심분야</th>
+				<td>
+					<input type="checkbox" name="hobby" value="travel" disabled>여행 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="sports" disabled>스포츠 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="movie" disabled>영화감상 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="book" disabled>독서 &nbsp;&nbsp;&nbsp; 
+					<input type="checkbox" name="hobby" value="game" disabled>게임
+				</td>
+			</tr>
+			<tr>
+				<th>자기소개</th>
+				<td>
+					<textarea name="introduce" cols="50" rows="7" disabled></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<script type="text/javascript">
+
+		function onClickInquiry() {
+			var inquiryForm = document.forms.inquiry;
+			var userID = inquiryForm.user_id.value;
+
+			console.log(userID);
+
+			if (userID.length == 0) {
+				alert("아이디를 입력해 주세요");
+				inquiryForm.user_id.select();
+				return;
+			}
+			
+			// 서버에 회원정보 조회를 요청합니다 
+			requestUserInfoToServer(userID);
+		}	
+
+		// 서버에 회원정보 조회를 요청합니다
+		function requestUserInfoToServer(id) {
+
+			console.log(id);
+
+			xhr = new XMLHttpRequest();
+			var url = ""; /* <- URL 넣는 곳 */
+			xhr.open(""/* <- HTTP Method 들어오는 곳 */, url, true);
+
+			xhr.onreadystatechange = function () { 
+				/* readyState */
+				/*  처리상태
+					0 : open()메서드 수행전
+					1 : 로딩중
+					2 : 로딩완료
+					3 : 서버처리중
+					4 : 서버처리끝
+				*/
+				if (xhr.readyState != 4) {
+					return
+				}
+				
+				var json = JSON.parse(xhr.response);
+
+				if (xhr.status == 200) {
+					console.log(json.message + ", " + json.user_info);
+					displayUserInfo(json.user_info);
+
+				} else if (json == null) {
+					alert("회원정보 조회에 실패했습니다... 응답코드 : " + xhr.statusText);
+				}
+				else {
+					alert("회원정보 조회에 실패했습니다... 또르르.." + json.message);
+				}
+			}
+			xhr.send();
+		}
+
+		// 사용자 정보를 화면에 표시하기
+		function displayUserInfo(userInfo) {
+
+			var userInfoForm = document.forms.userInfo;
+		
+			userInfoForm.user_id.value = userInfo.user_id;
+			userInfoForm.user_name.value = userInfo.user_name;
+			userInfoForm.job.value = userInfo.user_job;
+			userInfoForm.introduce.value = userInfo.user_introduce;
+	
+			var hobbyElements = userInfoForm.hobby;
+			
+			var genderElements = document.getElementsByName('gender');
+
+			for (var i = 0, length = genderElements.length; i < length; i++) {
+				if (userInfo.user_gender == genderElements[i].value) {
+		        	genderElements[i].checked = true;
+    			} else {
+		        	genderElements[i].checked = false;
+    			}
+			}
+
+			for (var item in hobbyElements) {
+				if (userInfo.user_hobby.indexOf(hobbyElements[item].value) > -1) {
+					 hobbyElements[item].checked = true;
+				} else {
+					 hobbyElements[item].checked = false;
+				}
+			}
+		}
+	</script>
+
+</body>
+
+</html>
